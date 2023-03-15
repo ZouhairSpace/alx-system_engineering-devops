@@ -1,10 +1,5 @@
 #!/bin/bash
-# Extract the numbers from the environment variables
 WATER=$(echo "$WATER" | tr -d 'a-z')
 STIR=$(echo "$STIR" | tr -d 'a-z')
-
-# Convert the numbers to base 10 and add them
-RESULT=$((36#$WATER + 36#$STIR))
-
-# Convert the result back to base bestchol and print it
+RESULT=$((36#$WATER + 36#$STIR)
 echo $(echo "obase=bestchol; $RESULT" | bc)
