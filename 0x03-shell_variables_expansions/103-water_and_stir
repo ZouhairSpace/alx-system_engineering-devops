@@ -1,2 +1,10 @@
 #!/bin/bash
-printf "%o\n" $(( $((5#(echo $WATER | tr water 01234))) + $((5#(echo $STIR | tr stir. 01234))) )) | tr 01234567 bestchol
+# Extract the numbers from the environment variables
+WATER=$(echo "$WATER" | tr -d 'a-z')
+STIR=$(echo "$STIR" | tr -d 'a-z')
+
+# Convert the numbers to base 10 and add them
+RESULT=$((36#$WATER + 36#$STIR))
+
+# Convert the result back to base bestchol and print it
+echo $(echo "obase=bestchol; $RESULT" | bc)
